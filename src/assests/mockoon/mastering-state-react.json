@@ -1,0 +1,218 @@
+{
+  "uuid": "5ac7d8bd-9a80-4460-b47a-31ddacf0fcb5",
+  "lastMigration": 32,
+  "name": "Mastering state react",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "3521368f-13bd-401f-8ae2-c8c63740f065",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "ed8060a3-7dd7-4b5d-854d-d797a4bf6d2c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "60794aab-293d-4ca6-b652-58871fa1535f",
+      "type": "http",
+      "documentation": "Get community information",
+      "method": "get",
+      "endpoint": "community",
+      "responses": [
+        {
+          "uuid": "94e35cb9-97b5-40a8-a7e4-54140ca5ac84",
+          "body": "{\"result\": [\r\n    {\r\n      \"name\": {\r\n        \"first\": \"Sandrine\",\r\n        \"middle\": \"Kai\",\r\n        \"last\": \"Runolfsdottir\"\r\n      },\r\n      \"username\": \"Sandrine-Runolfsdottir\",\r\n      \"emails\": [\r\n        \"Ana_Mayert@example.com\",\r\n        \"Chauncey.Gusikowski52@example.com\"\r\n      ],\r\n      \"image\": \"https://picsum.photos/seed/IRjQW/640/480\",\r\n      \"phoneNumber\": \"599.940.5384 x753\",\r\n      \"job\": {\r\n        \"title\": \"Direct Quality Coordinator\",\r\n        \"descriptor\": \"Investor\",\r\n        \"area\": \"Tactics\",\r\n        \"type\": \"Specialist\",\r\n        \"company\": \"Tillman LLC\"\r\n      },\r\n      \"uuid\": \"6e547f11-4111-4a82-b0b0-048a65fa1796\",\r\n      \"objectId\": \"664e5737a9962148a33e79f5\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"first\": \"Demario\",\r\n        \"middle\": \"Jules\",\r\n        \"last\": \"O'Reilly\"\r\n      },\r\n      \"username\": \"Demario-O'Reilly\",\r\n      \"emails\": [\r\n        \"Adalberto.Buckridge@example.com\",\r\n        \"Mya.Kunde87@example.com\"\r\n      ],\r\n      \"image\": \"https://loremflickr.com/640/480?lock=5403463372505088\",\r\n      \"phoneNumber\": \"(819) 538-2898 x3138\",\r\n      \"job\": {\r\n        \"title\": \"Legacy Usability Orchestrator\",\r\n        \"descriptor\": \"Customer\",\r\n        \"area\": \"Usability\",\r\n        \"type\": \"Director\",\r\n        \"company\": \"Bailey LLC\"\r\n      },\r\n      \"uuid\": \"ace97615-5b94-410f-8dcc-35756dbdbd0d\",\r\n      \"objectId\": \"664e5737a9962148a33e79f6\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"first\": \"Cruz\",\r\n        \"middle\": \"Jamie\",\r\n        \"last\": \"Schmeler\"\r\n      },\r\n      \"username\": \"Cruz-Schmeler\",\r\n      \"emails\": [\r\n        \"Citlalli.Graham50@example.com\",\r\n        \"Michale_Wunsch-Hahn88@example.com\"\r\n      ],\r\n      \"image\": \"https://loremflickr.com/640/480?lock=1262072474107904\",\r\n      \"phoneNumber\": \"1-631-312-7410\",\r\n      \"job\": {\r\n        \"title\": \"Global Accounts Liaison\",\r\n        \"descriptor\": \"Human\",\r\n        \"area\": \"Quality\",\r\n        \"type\": \"Director\",\r\n        \"company\": \"Moen Inc\"\r\n      },\r\n      \"uuid\": \"16cb5e5d-940c-4c35-b738-125202467124\",\r\n      \"objectId\": \"664e5737a9962148a33e79f7\"\r\n    }\r\n  ]\r\n}\r\n",
+          "latency": 2000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "fb416afb-1800-4f60-8ce1-e91b4b743dec",
+      "type": "http",
+      "documentation": "Subscribed emails",
+      "method": "post",
+      "endpoint": "subscribe",
+      "responses": [
+        {
+          "uuid": "36fc9d40-29ff-4942-b4f4-7ea7824db767",
+          "body": "{\"message\": \"subscribed email\"}",
+          "latency": 2000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "8aa0c2e7-2e1d-4dc3-ac78-19ab7bf47c66",
+          "body": "{\"error\": \"Email is alredy in use\"}",
+          "latency": 0,
+          "statusCode": 422,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "forbidden@gmail.com",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "5a17d224-bd20-4160-8c6e-cead093ad4fc",
+      "type": "http",
+      "documentation": "Unsubscribed emails",
+      "method": "delete",
+      "endpoint": "subscribe/:id",
+      "responses": [
+        {
+          "uuid": "b2a3a8fd-99be-4f30-bd54-7405798f6cd6",
+          "body": "{\n  \n  \"message\": \"Unsubscribed email\"\n  \n}",
+          "latency": 2000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "3521368f-13bd-401f-8ae2-c8c63740f065"
+    },
+    {
+      "type": "route",
+      "uuid": "60794aab-293d-4ca6-b652-58871fa1535f"
+    },
+    {
+      "type": "route",
+      "uuid": "5a17d224-bd20-4160-8c6e-cead093ad4fc"
+    },
+    {
+      "type": "route",
+      "uuid": "fb416afb-1800-4f60-8ce1-e91b4b743dec"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
