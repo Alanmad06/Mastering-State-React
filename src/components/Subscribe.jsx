@@ -1,20 +1,42 @@
-import { useRef, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import "../styles/Subscribe.css";
+import { initialState, subscribeReducer } from "../reducers/subscribe";
 
 export function Subscribe() {
   const emailRef = useRef();
 
-  const [email, setEmail] = useState(null);
-  const [isItSubscribed, setIsItSubscribed] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, dispatch] = useReducer(subscribeReducer, initialState);
+  const { isItSubscribed, email, isLoading } = state;
+  const addEmail = (email) => {
+    dispatch({
+      type: "ADD_EMAIL",
+      payload: { email },
+    });
+  };
+
+  const changeSubscription = (subscription) => {
+    dispatch({
+      type: "CHANGE_SUBSCRIPTION",
+      payload: { isItSubscribed: subscription },
+    });
+  };
+
+  const changeLoading = () => {
+    dispatch({
+      type: "CHANGE_LOADING",
+    });
+  };
+
+  const clearEmail = () => {
+    dispatch({
+      type: "CLEAR_EMAIL",
+    });
+  };
 
   const subscribeEmail = (event) => {
-    event.preventDefault();
-
-
     if (!isItSubscribed && emailRef.current.value !== "") {
-      setEmail(emailRef.current.value);
-      setIsLoading(true);
+      addEmail(emailRef.current.value);
+      changeLoading();
 
       const body = {
         email: emailRef.current.value,
@@ -37,29 +59,26 @@ export function Subscribe() {
           console.error(error);
         })
         .then((data) => {
-          setIsLoading(false);
+          changeLoading();
 
           emailRef.current.value = "";
 
           if (data.error) {
             alert(JSON.stringify(data));
-            setEmail(null);
+            clearEmail();
           } else {
-            console.log(data);
-            setIsItSubscribed(!isItSubscribed);
+            changeSubscription(!isItSubscribed);
           }
         })
         .catch((error) => {
           console.error(error);
         });
-    }  
+    }
   };
 
-  const unsubscribeEmail = (event) =>{
-    event.preventDefault()
-
+  const unsubscribeEmail = (event) => {
     if (isItSubscribed) {
-      setIsLoading(true);
+      changeLoading();
 
       const requestInit = {
         method: "DELETE",
@@ -74,15 +93,15 @@ export function Subscribe() {
           console.error(error);
         })
         .then((data) => {
-          setIsLoading(false);
-          setIsItSubscribed(!isItSubscribed);
-          setEmail(null);
+          changeLoading();
+          changeSubscription(!isItSubscribed);
+          clearEmail();
         })
         .catch((error) => {
           console.error(error);
         });
     }
-  }
+  };
 
   return (
     <article className="subscribe">
