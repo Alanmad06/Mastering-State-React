@@ -1,27 +1,18 @@
+image: node:latest
 
-stages:          
+stages:
   - build
   - test
-  - deploy
 
-build-job:      
+build:
   stage: build
   script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
+    - npm install  # Instala las dependencias
 
-unit-test-job:  
-  stage: test   
-  image: node:18.16.0
-  before_script:
-    - npm install
+test:
+  stage: test
   script:
-    - npm test
-
-
-deploy-job:      
-  stage: deploy  
-  environment: production
-  script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
+    - npm test  # Ejecuta tus pruebas Jest
+  artifacts:
+    paths:
+      - node_modules/  # Caché para las dependencias
