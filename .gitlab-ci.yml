@@ -1,18 +1,14 @@
-image: node:latest
+
 
 stages:
-  - build
   - test
 
-build:
-  stage: build
-  script:
-    - npm install  # Instala las dependencias
+
 
 test:
+  image: node:18.16.0
   stage: test
   script:
-    - npm test  # Ejecuta tus pruebas Jest
-  artifacts:
-    paths:
-      - node_modules/  # Caché para las dependencias
+    - npm install
+    - npm test  
+
