@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState } from "react";
+import { useReducer, useRef } from "react";
 import "../styles/Subscribe.css";
 import { initialState, subscribeReducer } from "../reducers/subscribe";
 
