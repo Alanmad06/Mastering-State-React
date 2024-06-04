@@ -35,5 +35,5 @@ deploy:
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@159.54.148.245 "
         sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD &&
-        sudo docker ps -aq | xargs docker stop | xargs docker rm &&
+        sudo docker stop $(docker ps -aq) && docker rm $(docker ps -aq) &&
         sudo docker run -d -p 3000:3000 $IMAGE_NAME:$IMAGE_TAG"
