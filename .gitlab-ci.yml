@@ -1,0 +1,27 @@
+
+stages:          
+  - build
+  - test
+  - deploy
+
+build-job:      
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+
+unit-test-job:  
+  stage: test   
+  image: node:18.16.0
+  before_script:
+    - npm install
+  script:
+    - npm test
+
+
+deploy-job:      
+  stage: deploy  
+  environment: production
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
