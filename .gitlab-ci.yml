@@ -32,7 +32,7 @@ deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
-           #3
+           #4
   script:  #sudo docker stop $(sudo docker ps -a -q) && sudo docker rm $(sudo docker ps -a -q) &&
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@159.54.148.245 "
         sudo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD &&
