@@ -2,7 +2,7 @@
 FROM node:18.16.0
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR ./src/app
+WORKDIR  /src/app
 
 # Copia el archivo package.json y package-lock.json
 COPY package*.json ./
@@ -13,7 +13,7 @@ RUN npm install
 # Copia el resto de los archivos de la aplicación
 COPY . .
 
-# Expone el puerto en el que se ejecutará la aplicación (por ejemplo, 3000)
+# Expone el puerto en el que se ejecutará la aplicación 
 EXPOSE 3000
 
 # Comando para iniciar la aplicación
