@@ -17,6 +17,7 @@ export function Subscribe() {
     if (!subscribed && emailRef.current.value !== "") {
       
        dispatch(subscribeEmailRedux(emailRef.current.value))
+       emailRef.current.value = ''
     }
   };
 
@@ -24,6 +25,7 @@ export function Subscribe() {
     event.preventDefault()
     if (subscribed) {
       dispatch(unsubscribeEmailRedux())
+      emailRef.current.value = ''
     }
   };
 
