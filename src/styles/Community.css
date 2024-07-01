@@ -1,6 +1,6 @@
-.hide__input:checked ~ .community{
+/* .hide__input:checked ~ .community{
     display: none;
-}
+} */
 
 .hide__input{
     display: none;

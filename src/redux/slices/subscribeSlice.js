@@ -63,7 +63,7 @@ export const unsubscribeEmail = createAsyncThunk(
   }
 );
 
-export const subscribeSlicer = createSlice({
+export const subscribeSlice = createSlice({
   name: "subscribe",
   initialState,
   reducers: {
@@ -107,5 +107,5 @@ export const subscribeSlicer = createSlice({
   },
 });
 
-export const { changeSubscription, changeLoading } = subscribeSlicer.actions;
-export default subscribeSlicer.reducer;
+export const { changeSubscription, changeLoading } = subscribeSlice.actions;
+export default subscribeSlice.reducer;

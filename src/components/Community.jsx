@@ -2,9 +2,13 @@ import { useContext } from "react";
 import "../styles/Community.css";
 import { Card } from "./Card";
 import { communityContext } from "../context/CommunityProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { changeHide } from "../redux/slices/communitySlice";
 
 export function Community() {
   const communityData = useContext(communityContext);
+  const {hide} = useSelector(state => state.community)
+  const dispatch = useDispatch()
 
   let communityPeople = communityData.data;
   let loading = communityData.loading;
@@ -12,7 +16,7 @@ export function Community() {
 
   return (
     <>
-      <input id="hide" className="hide__input" type="checkbox"></input>
+      <input id="hide" className="hide__input" type="checkbox" onClick={() => dispatch(changeHide())}></input>
       <label htmlFor="hide" className="hide__label">
         Hide
       </label>
@@ -28,7 +32,7 @@ export function Community() {
           </p>
         </div>
 
-        <div className="community__people">
+        {(!hide) ? <div className="community__people">
           {!loading ? (
             communityPeople.map((person) => {
               return(
@@ -47,6 +51,8 @@ export function Community() {
             <p>Loading...</p>
           )}
         </div>
+        : ''}
+        
       </article>
     </>
   );
