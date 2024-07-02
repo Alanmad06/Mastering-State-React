@@ -1,23 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { Provider } from 'react-redux';
-import App from './App';
-import { store } from './redux/store';
-import reportWebVitals from './reportWebVitals';
-import { CommunityProvider } from './context/CommunityProvider';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { Provider } from "react-redux";
+import App from "./App";
+import { store } from "./redux/store";
+import reportWebVitals from "./reportWebVitals";
+import { CommunityProvider } from "./context/CommunityProvider";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { NotFound } from "./components/NotFound";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement : <NotFound/>
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
- 
-    <CommunityProvider>
-        <Provider store={store}>
-        <App />
-        </Provider>
-
-    </CommunityProvider>
-   
-
+  <CommunityProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}/>
+    </Provider>
+  </CommunityProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
