@@ -10,14 +10,15 @@ export function CommunityProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3002/community")
+    fetch("http://localhost:3000/community")
       .then((data) => data.json())
       .catch((error) => {
         console.error(error);
       })
       .then((data) => {
+        console.log("data",data)
         setIsLoading(false);
-        setData(data.result);
+        setData(data);
       })
       .catch((error) => {
         console.error(error);

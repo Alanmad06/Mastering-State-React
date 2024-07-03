@@ -14,6 +14,7 @@ export function Community() {
   let loading = communityData.loading;
 
 
+  console.log(communityPeople)
   return (
     <>
       <input id="hide" className="hide__input" type="checkbox" onClick={() => dispatch(changeHide())}></input>
@@ -37,11 +38,11 @@ export function Community() {
             communityPeople.map((person) => {
               return(
                 <Card
-              key={person.uuid}
-                name={person.name.first + person.name.last}
-                position={person.job.title}
-                image={person.image}
-                description={person.emails[0]}
+              key={person.id}
+                name={`${person.firstName} ${person.lastName}`}
+                position={person.position}
+                image={person.avatar}
+                
                 
               />
               )
