@@ -13,7 +13,7 @@ export function Subscribe() {
   
   const subscribeEmail = (event) => {
     event.preventDefault()
-    console.log('ola');
+  
     if (!subscribed && emailRef.current.value !== "") {
       
        dispatch(subscribeEmailRedux(emailRef.current.value))

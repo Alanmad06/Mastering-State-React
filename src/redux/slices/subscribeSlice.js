@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { addUser, clearUser } from "./userSlice";
 
-const url = "http://localhost:3002/subscribe";
+const urlSubscribe = "http://localhost:3000/subscribe";
+const urlUnsubscribe = "http://localhost:3000/unsubscribe";
 
 const initialState = {
   subscribed: false,
@@ -13,10 +14,9 @@ export const subscribeEmail = createAsyncThunk(
   async (email, { dispatch, rejectWithValue }) => {
     const body = {
       email: email,
-      id: email,
     };
 
-    console.log('subscribeEmail');
+    
 
     const requestInitSubscribe = {
       method: "POST",
@@ -26,14 +26,17 @@ export const subscribeEmail = createAsyncThunk(
       body: JSON.stringify(body),
     };
 
-    dispatch(addUser(email));
+  
 
     try {
-      const response = await fetch(url, requestInitSubscribe);
+      const response = await fetch(urlSubscribe, requestInitSubscribe);
       const data = await response.json();
+      dispatch(addUser(email));
+      if(data.error) dispatch(clearUser())
       return data;
     } catch (error) {
       console.error(error);
+      dispatch(clearUser())
       return rejectWithValue(error.message);
     }
   }
@@ -41,22 +44,27 @@ export const subscribeEmail = createAsyncThunk(
 
 export const unsubscribeEmail = createAsyncThunk(
   "subscribe/unsubscribeEmail",
-  async (_, { getState, rejectWithValue ,dispatch }) => {
-    console.log('unsubscribeEmail');
+  async (_, { rejectWithValue ,dispatch }) => {
+   
 
 
-    const { email } = getState().user;
+    
 
     const requestInitUnsubscribe = {
-      method: "DELETE",
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
 
     try {
-      const response = await fetch(`${url}/${email}`, requestInitUnsubscribe);
+      const response = await fetch(urlUnsubscribe, requestInitUnsubscribe);
       const data = await response.json();
       dispatch(clearUser())
+      
       return data;
     } catch (error) {
+      
       console.error(error);
       return rejectWithValue(error.message);
     }
@@ -86,6 +94,7 @@ export const subscribeSlice = createSlice({
         if (data.error) {
           alert(JSON.stringify(data));
           state.subscribed = false;
+          
         } else {
           state.subscribed = true;
         }

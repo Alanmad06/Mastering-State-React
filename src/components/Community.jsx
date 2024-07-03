@@ -14,7 +14,7 @@ export function Community() {
   let loading = communityData.loading;
 
 
-  console.log(communityPeople)
+
   return (
     <>
       <input id="hide" className="hide__input" type="checkbox" onClick={() => dispatch(changeHide())}></input>
