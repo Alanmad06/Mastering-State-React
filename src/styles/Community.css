@@ -8,7 +8,7 @@
 
 .hide__label{
     position: absolute;
-    top: 101vh;
+    top: 5vh;
     right: 25px;
     cursor: pointer;
     border: 2px solid red;
@@ -22,9 +22,28 @@
     background-color: red;
 }
 
+.back__button {
+    position: absolute;
+    top: 5vh;
+    left: 25px;
+    background-color: rgba(64, 64, 149, 0.455);
+    border-radius: 20px;
+    padding: 10px;
+    width: 100px;
+    border: none;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .back__button:hover{
+    background-color: rgb(42, 42, 113);
+    transition: all ease-in-out .3s;
+}
 
 .community{
-    margin: 50px 0;
+    /* margin: 50px 0; */
     display: flex;
     flex-direction: column;
     align-items: center;

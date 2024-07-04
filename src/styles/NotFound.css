@@ -25,6 +25,7 @@
   align-self: center;
   text-align: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .notfound__link{

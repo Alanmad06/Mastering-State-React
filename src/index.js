@@ -8,6 +8,8 @@ import reportWebVitals from "./reportWebVitals";
 import { CommunityProvider } from "./context/CommunityProvider";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { NotFound } from "./components/NotFound";
+import { Community } from "./components/Community";
+import { CardPage } from "./components/CardPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,19 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement : <NotFound/>
   },
+  {
+    path: "/community",
+    element: <Community/>,
+    children:[{
+      path: "community/:id",
+      element:<CardPage/>
+
+    }]
+
+    
+    
+  },
+  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -4,11 +4,13 @@ import { Card } from "./Card";
 import { communityContext } from "../context/CommunityProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { changeHide } from "../redux/slices/communitySlice";
+import { useNavigate } from "react-router-dom";
 
 export function Community() {
   const communityData = useContext(communityContext);
   const {hide} = useSelector(state => state.community)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   let communityPeople = communityData.data;
   let loading = communityData.loading;
@@ -21,6 +23,10 @@ export function Community() {
       <label htmlFor="hide" className="hide__label">
         Hide
       </label>
+      
+      <button className="back__button" onClick={() => navigate(-1)}>
+                <strong> Go Back !</strong>
+      </button>
 
       <article className="community">
         <div className="community__title">

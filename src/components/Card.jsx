@@ -1,6 +1,9 @@
 import '../styles/Card.css'
 
+
 export function Card({ name, position, description, image }) {
+
+  
 
   return (
     <div className="card" >
