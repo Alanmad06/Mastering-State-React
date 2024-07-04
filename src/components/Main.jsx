@@ -3,7 +3,7 @@ import '../styles/Main.css'
 export function Main(){
 
     return(
-        <main className="main">
+        <main className="main" id='main'>
             
             <div className="main__logo">LOGO</div>
             <div className="main__text">

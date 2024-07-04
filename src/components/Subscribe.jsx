@@ -30,7 +30,7 @@ export function Subscribe() {
   };
 
   return (
-    <article className="subscribe">
+    <article className="subscribe" id="subscribe">
       <div className="subscribe__title">
         <h2 className="subscribe__title-h2"> Join Our Program </h2>
         <p className="subscribe__title-p">

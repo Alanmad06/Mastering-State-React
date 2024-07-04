@@ -2,7 +2,7 @@ import "../styles/Footer.css";
 
 export function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <h3 className="footer__logo">PROJECT</h3>
       <div className="footer__info">
         <div className="footer__info-street-email">
