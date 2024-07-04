@@ -18,17 +18,15 @@ const router = createBrowserRouter([
     errorElement : <NotFound/>
   },
   {
-    path: "/community",
+    path: "community",
     element: <Community/>,
-    children:[{
-      path: "community/:id",
-      element:<CardPage/>
-
-    }]
-
     
     
-  },
+    
+  },{
+    path: "community/:id",
+    element:<CardPage/>
+  }
   
 ]);
 
