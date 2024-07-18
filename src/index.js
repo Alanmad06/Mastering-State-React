@@ -30,14 +30,31 @@ const router = createBrowserRouter([
   
 ]);
 
+async function enableMocking() {
+  if (process.env.NODE_ENV !== 'development') {
+    return
+  }
+ 
+  const { worker } = await import('./mocks/browser')
+ 
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start()
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <CommunityProvider>
-    <Provider store={store}>
-      <RouterProvider router={router}/>
-    </Provider>
-  </CommunityProvider>
-);
+
+enableMocking().then(()=>{
+
+  root.render(
+    <CommunityProvider>
+      <Provider store={store}>
+        <RouterProvider router={router}/>
+      </Provider>
+    </CommunityProvider>
+  );
+})
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

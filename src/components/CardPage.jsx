@@ -8,6 +8,7 @@ export const CardPage = () => {
   const urlCommunity = `http://localhost:3000/community/${id}`;
   const [person, setPerson] = useState({});
   const navigate = useNavigate()
+ 
 
   useEffect( () => {
     const requestInit = {

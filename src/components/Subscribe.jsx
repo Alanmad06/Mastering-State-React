@@ -44,6 +44,7 @@ export function Subscribe() {
           id="email"
           type="text"
           placeholder="Email"
+          role="subscribe"
         />
         {subscribed ? (
           <button

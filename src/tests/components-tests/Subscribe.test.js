@@ -5,15 +5,27 @@ import { Provider } from 'react-redux';
 import {store} from '../../redux/store';
 import {Subscribe} from '../../components/Subscribe';
 
+const emailMock = 'email@gmail.com';
+const emailMockError = 'forbidden@email.com'
+
 describe('<Subscribe/>', () => {
-  test('Renderizado componente Subscribe', () => {
+
+  
+
+  beforeEach(()=>{
     render(
       <Provider store={store}>
         <Subscribe />
       </Provider>
     );
-    const titleElement = screen.getByText(/Join Our Program/i);
-    expect(titleElement).toBeInTheDocument();
+  })
+
+  test('One input should be on screen', () => {
+    
+    expect(screen.getByRole('subscribe')).toBeInTheDocument()
+    
   });
+
+  test('Mock Api Error')
 });
 
