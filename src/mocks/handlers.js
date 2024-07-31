@@ -17,5 +17,11 @@ export const handlers = [
             "lastName": "Filler",
             "position": "Lead Engineer at Company Name"
         }])
-    })
+    }),
+    http.post('localhost:3000/subscribe',()=>{
+        return HttpResponse.json({"success": true})
+    }),
+    http.post('localhost:3000/unsubscribe',()=>{
+        return HttpResponse.json({"success": true})
+    }),
 ]
