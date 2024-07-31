@@ -11,6 +11,9 @@ import { NotFound } from "./components/NotFound";
 import { Community } from "./components/Community";
 import { CardPage } from "./components/CardPage";
 
+ 
+
+
 const router = createBrowserRouter([
   {
     path: "/",

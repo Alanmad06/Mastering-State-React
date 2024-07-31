@@ -1,18 +1,19 @@
 // src/tests/components-tests/Subscribe.test.js
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
 import { Subscribe } from "../../components/Subscribe";
-import userEvent from '@testing-library/user-event'
+import userEvent from "@testing-library/user-event";
+import { expect, jest, test } from "@jest/globals";
+
+
 
 
 const emailMock = "email@gmail.com";
 const emailMockError = "forbidden@email.com";
 
 describe("<Subscribe/>", () => {
- 
-
   const renderComponent = () => {
     return render(
       <Provider store={store}>
@@ -21,27 +22,43 @@ describe("<Subscribe/>", () => {
     );
   };
 
+  test("One input should be on screen", () => {
+    renderComponent();
+    expect(screen.getByRole("subscribe")).toBeInTheDocument();
+  });
 
-    test("One input should be on screen",async () => {
-      renderComponent()
-      expect(screen.getByRole("subscribe")).toBeInTheDocument();
+  test("Mock Api Error Alert", async () => {
+    renderComponent();
+    const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
+
+    const input = screen.getByRole("subscribe");
+    const button = screen.getByText("SUBSCRIBE");
+
+    userEvent.type(input, emailMockError);
+
+    userEvent.click(button);
+
+    await waitFor(() => {
+    
+      expect(alertMock).toHaveBeenCalledWith('{"error":"Email is already in use"}');
+      
     });
 
-    test("Mock Api Error", () => {
-      renderComponent()
-      const input = screen.getByRole("subscribe");
-      const button = screen.getByText('SUBSCRIBE')
-      userEvent.type(input,emailMockError)
+    // Restaurar la implementación original de alert
+    alertMock.mockRestore();
+  });
 
-      userEvent.click(button)
+  test('Email should be on the navbar',()=>{
+    renderComponent()
+    const input = screen.getByRole("subscribe");
+    const button = screen.getByText("SUBSCRIBE");
 
-      const alert = await screen.getByRole('alert')
+    userEvent.type(input, emailMock);
 
-      expect(alert)
+    userEvent.click(button);
 
-     
+    expect(screen.getByText(emailMock).toBeInTheDocument())
 
-
-    });
-
+  }
+  )
 });
