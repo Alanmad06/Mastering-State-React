@@ -101,6 +101,9 @@ export const subscribeSlice = createSlice({
       })
       .addCase(unsubscribeEmail.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase('RESET_STORE', () => {
+        return initialState;
       });
   },
 });
