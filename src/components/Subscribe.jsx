@@ -1,8 +1,14 @@
 import {  useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+
+import { useDispatch,useSelector } from "react-redux";
 import "../styles/Subscribe.css";
 
-import { subscribeEmail as subscribeEmailRedux, unsubscribeEmail as  unsubscribeEmailRedux  } from "../redux/slices/subscribeSlice";
+import { subscribeEmail as subscribeEmailRedux, unsubscribeEmail as  unsubscribeEmailRedux  } from "../redux/slices/thunksSubscribeSlice";
+
+
+
+
+
 
 export function Subscribe() {
 
@@ -21,7 +27,7 @@ export function Subscribe() {
     }
   };
 
-  const unsubscribeEmail = (event) => {
+  const unsubscribeEmail = (event ) => {
     event.preventDefault()
     if (subscribed) {
       dispatch(unsubscribeEmailRedux())
@@ -75,3 +81,4 @@ export function Subscribe() {
     </article>
   );
 }
+

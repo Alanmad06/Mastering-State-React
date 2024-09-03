@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 
 export const CardPage = () => {
   const { id } = useParams();
-  const urlCommunity = `http://localhost:3000/community/${id}`;
+  
   const [person, setPerson] = useState({});
   const navigate = useNavigate()
  
 
   useEffect( () => {
+    const urlCommunity = `http://localhost:3000/community/${id}`;
     const requestInit = {
       method: "GET",
     };

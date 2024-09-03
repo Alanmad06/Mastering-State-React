@@ -15,7 +15,7 @@ export const handlers = [
     try {
       const body = await request.json(); // Obtén el cuerpo de la solicitud como JSON
       const email = body.email;
-      console.log("email:", email);
+    
       if (email === "forbidden@email.com") {
         return  HttpResponse.json({
           error: "Email is already in use",
