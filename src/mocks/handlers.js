@@ -1,7 +1,9 @@
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
 
 export const handlers = [
-  http.get("http://localhost:3000/community", () => {
+  http.get("http://localhost:3000/community", async () => {
+    await delay(150)
+    
     return HttpResponse.json([
       {
         id: "2f1b6bf3-f23c-47e4-88f2-e4ce89409376",
@@ -12,6 +14,7 @@ export const handlers = [
     ]);
   }),
   http.post("http://localhost:3000/subscribe", async ({ request }) => {
+    await delay(150)
     try {
       const body = await request.json(); // Obtén el cuerpo de la solicitud como JSON
       const email = body.email;

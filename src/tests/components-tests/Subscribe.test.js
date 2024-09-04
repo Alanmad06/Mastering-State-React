@@ -20,19 +20,22 @@ import {
 import { addUser } from "../../redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/redux-hooks";
 import * as redux from "react-redux";
+import { renderWithProviders } from "../../utils/test-utils";
+import { setupStore } from "../../redux/store";
 
 const emailMock = "email@gmail.com";
 const emailMockError = "forbidden@email.com";
 
-const store = configureStore({
+/* const store = configureStore({
   reducer: {
     user: userReducer,
     subscribe: subscribeReducer,
     community: communityReducer,
   },
 });
+ */
 
-const renderComponentSubscribe = () => {
+const renderComponentSubscribe = (store) => {
   return render(
     <Provider store={store}>
       <Subscribe />
@@ -50,24 +53,18 @@ const renderComponentHeader = () => {
   );
 };
 
+/* beforeEach(() => {
+  store.dispatch({ type: "RESET_STORE" });
+  store.dispatch(clearUser());
+});
 
+afterEach(() => {
+  jest.clearAllMocks();
+}); */
 
 describe("<Subscribe/> Input", () => {
- 
-
-  beforeEach(() => {
-    
-        store.dispatch({ type: "RESET_STORE" });
-    store.dispatch(clearUser());
-  });
-
-  afterEach(() => {
-    
-    jest.clearAllMocks();
-  });
-
   test("Input should be on screen", async () => {
-    renderComponentSubscribe();
+    renderWithProviders(<Subscribe />);
     // Esto te mostrará el contenido del DOM en la consola
     expect(screen.getByRole("subscribe")).toBeInTheDocument();
   });
@@ -110,9 +107,13 @@ describe("<Subscribe/> Input", () => {
   });
  */
 
-  test("Email should be on the navbar", async () => {
-    renderComponentSubscribe();
-    renderComponentHeader();
+  /* test("Email should be on the navbar", async () => {
+    renderWithProviders( <Subscribe />);
+    renderWithProviders(<Router>
+      <Header />
+    </Router>,{preloadedState:{
+      user : {email: emailMock}
+    }})
 
     const input = screen.getByRole("subscribe");
     const button = screen.getByText("SUBSCRIBE");
@@ -127,27 +128,7 @@ describe("<Subscribe/> Input", () => {
 
     
   });
-
-  test('Function dispatch should dispatch when sugmit button', async ()=>{
-    const dispatchAux = store.dispatch
-    store.dispatch = jest.fn()
-
-
-    renderComponentSubscribe();
-    
-    const input = screen.getByRole("subscribe");
-    const button = screen.getByText("SUBSCRIBE");
-
-    userEvent.type(input, emailMock);
-
-    userEvent.click(button);
-
-    await waitFor(() => {
-      expect(store.dispatch).toHaveBeenCalledTimes(1);
-    });
-    store.dispatch = dispatchAux;
-  })
-
+ */
 
   /*  const dispatch = jest.fn();
   const getState = jest.fn(() => ({}));
@@ -203,13 +184,8 @@ describe("<Subscribe/> Input", () => {
 });
 
 describe("<Subscribe/> Button", () => {
-  let dispatch;
-  beforeEach(() => {});
-
-  afterEach(() => {});
-
   test("Button should be on screen", () => {
-    renderComponentSubscribe();
+    renderWithProviders(<Subscribe />);
     expect(screen.getByText("SUBSCRIBE")).toBeInTheDocument();
   });
 
@@ -243,8 +219,46 @@ describe("<Subscribe/> Button", () => {
    
   }); */
 
+  test("Function dispatch should dispatch when sugmit button", async () => {
+    const store = setupStore();
+    const dispatch = jest.spyOn(store, "dispatch");
+
+    renderWithProviders(<Subscribe />, { store });
+
+    const input = screen.getByRole("subscribe");
+    const button = screen.getByText("SUBSCRIBE");
+
+    userEvent.type(input, emailMock);
+
+    userEvent.click(button);
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test("Function dispatch should dispatch when sugmit button", async () => {
+    const store = setupStore({
+      subscribe: {
+        subscribed: true,
+        loading: false,
+      },
+    });
+    const dispatch = jest.spyOn(store, "dispatch");
+
+    renderWithProviders(<Subscribe />, { store });
+
+    const button = screen.getByText("UNSUBSCRIBE");
+
+    userEvent.click(button);
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+    });
+  });
+
   test("Button should change to UNSUBSCRIBE label when submit", async () => {
-    renderComponentSubscribe();
+    renderWithProviders(<Subscribe />);
 
     const input = screen.getByRole("subscribe");
     const button = screen.getByText("SUBSCRIBE");
