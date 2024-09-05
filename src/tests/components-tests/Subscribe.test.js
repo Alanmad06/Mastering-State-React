@@ -1,25 +1,13 @@
 // src/tests/components-tests/Subscribe.test.js
-import React, { act } from "react";
-import { render, screen, waitFor } from "@testing-library/react";
-import { Provider } from "react-redux";
+
+import {screen, waitFor } from "@testing-library/react";
+
 
 import { Subscribe } from "../../components/Subscribe";
 import userEvent from "@testing-library/user-event";
-import { expect, jest, test } from "@jest/globals";
-import { Header } from "../../components/Header";
-import { BrowserRouter as Router } from "react-router-dom";
-import { clearUser } from "../../redux/slices/userSlice";
-import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "../../redux/slices/userSlice";
-import subscribeReducer from "../../redux/slices/subscribeSlice";
-import communityReducer from "../../redux/slices/communitySlice";
-import {
-  subscribeEmail,
-  unsubscribeEmail,
-} from "../../redux/slices/thunksSubscribeSlice";
-import { addUser } from "../../redux/slices/userSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/redux-hooks";
-import * as redux from "react-redux";
+
+
+
 import { renderWithProviders } from "../../utils/test-utils";
 import { setupStore } from "../../redux/store";
 

@@ -1,6 +1,6 @@
 // src/setupTests.js
 import '@testing-library/jest-dom';
-
+import "@jest/globals";
 
 import { setupServer } from 'msw/node';
 import { handlers } from './mocks/handlers';
