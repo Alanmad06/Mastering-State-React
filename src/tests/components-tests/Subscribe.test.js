@@ -1,12 +1,9 @@
 // src/tests/components-tests/Subscribe.test.js
 
-import {screen, waitFor } from "@testing-library/react";
-
+import { screen, waitFor } from "@testing-library/react";
 
 import { Subscribe } from "../../components/Subscribe";
 import userEvent from "@testing-library/user-event";
-
-
 
 import { renderWithProviders } from "../../utils/test-utils";
 import { setupStore } from "../../redux/store";

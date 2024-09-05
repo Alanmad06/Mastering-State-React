@@ -10,7 +10,7 @@ describe(" <NotFound/>", () => {
         <NotFound />
       </BrowserRouter>
     );
-    screen.debug();
+
     expect(screen.getByText("Page Not Found 404")).toBeInTheDocument();
   });
 });
