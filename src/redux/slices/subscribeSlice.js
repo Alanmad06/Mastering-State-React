@@ -1,15 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { subscribeEmail,unsubscribeEmail } from "./thunksSubscribeSlice";
-
-
-
+import { subscribeEmail, unsubscribeEmail } from "./thunksSubscribeSlice";
 
 const initialState = {
   subscribed: false,
   loading: false,
 };
-
-
 
 export const subscribeSlice = createSlice({
   name: "subscribe",
@@ -52,9 +47,7 @@ export const subscribeSlice = createSlice({
       .addCase(unsubscribeEmail.rejected, (state) => {
         state.loading = false;
       })
-      .addCase('RESET_STORE', () => {
-        return initialState;
-      });
+      
   },
 });
 

@@ -28,7 +28,7 @@ export const CardPage = () => {
     <article className="cardPage">
         
       <button className="back__button" onClick={() => navigate(-1)}>
-                <strong> Go Back !</strong>
+                <strong>Go Back !</strong>
       </button>
       <Card
         id={person.id}

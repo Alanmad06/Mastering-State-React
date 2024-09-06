@@ -4,7 +4,7 @@ const config1 = {
   collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts"],
   setupFiles: [
     "react-app-polyfill/jsdom",
-    "./jest.polyfills.js", // Añade tu archivo de polyfills aquí
+    "./jest.polyfills.js", 
   ],
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
   testMatch: [

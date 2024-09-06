@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 
 import { setupStore } from '../redux/store';
 
-// Esta función renderiza el componente con los proveedores necesarios.
+
 export function renderWithProviders(
   ui,
   {
     preloadedState = {},
-    // Crear una instancia de la store automáticamente si no se pasó una
+    
     store = setupStore(preloadedState),
     ...renderOptions
   } = {}
