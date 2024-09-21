@@ -79,7 +79,7 @@ describe("<CardPage />", () => {
       { wrapper }
     );
     let card;
-    screen.debug();
+    
     await waitFor(() => {
       card = screen.getByText("Lead Designer at Company Name");
     });
@@ -96,6 +96,6 @@ describe("<CardPage />", () => {
       { timeout: 3000 }
     );
 
-    screen.debug();
+  
   });
 });
