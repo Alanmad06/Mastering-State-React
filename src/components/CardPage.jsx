@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export const CardPage = () => {
   const { id } = useParams();
-  
+  const [loading,setLoading] = useState(true)
   const [person, setPerson] = useState({});
   const navigate = useNavigate()
  
@@ -18,7 +18,10 @@ export const CardPage = () => {
 
     fetch(urlCommunity, requestInit)
         .then((response) => response.json())
-        .then((data) => setPerson(data))
+        .then((data) => {
+          
+          setLoading(false)
+          setPerson(data[0])})
         .catch (e =>{console.error(e);}) 
     
 } 
@@ -27,15 +30,18 @@ export const CardPage = () => {
   return (
     <article className="cardPage">
         
-      <button className="back__button" onClick={() => navigate(-1)}>
-                <strong>Go Back !</strong>
+      <button className="back__button"  onClick={() => navigate(-1)}>
+                <strong>Go Back !N</strong>
       </button>
-      <Card
+      {!loading ?
+      <>
+       <div>Card Page</div> <Card
         id={person.id}
         name={`${person.firstName} ${person.lastName}`}
         position={person.position}
         image={person.avatar}
-      />
+      /> </>: <p>Loading  ...</p>}
+      
     </article>
   );
 };

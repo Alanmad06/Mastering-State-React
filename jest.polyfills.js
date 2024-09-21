@@ -18,7 +18,7 @@ Object.defineProperties(globalThis, {
   TransformStream: { value: TransformStream },
 });
 
-const { Blob, File } = require('node:buffer');
+/* const { Blob, File } = require('node:buffer');
 const { fetch, Headers, FormData, Request, Response } = require('undici');
 
 Object.defineProperties(globalThis, {
@@ -29,4 +29,4 @@ Object.defineProperties(globalThis, {
   FormData: { value: FormData },
   Request: { value: Request },
   Response: { value: Response },
-});
+}); */

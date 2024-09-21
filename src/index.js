@@ -45,6 +45,15 @@ async function enableMocking() {
   return worker.start()
 }
 
+
+/* async function enableMocking() {
+  if (process.env.NODE_ENV !== 'development') {
+    return
+  }
+ 
+  
+} */
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = setupStore()
 
