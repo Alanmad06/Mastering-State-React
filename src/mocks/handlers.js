@@ -17,7 +17,7 @@ export const handlers = [
     await delay(1500);
 
     
-
+  
     if (params.id === "2f1b6bf3-f23c-47e4-88f2-e4ce89409376") {
       return HttpResponse.json([
         {

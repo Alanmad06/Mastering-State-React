@@ -9,6 +9,7 @@ import { renderWithProviders } from "../../utils/test-utils";
 import { setupStore } from "../../redux/store";
 
 const emailMock = "email@gmail.com";
+const emailMockError = "forbidden@email.com";
 
 describe("<Subscribe/> Input", () => {
   test("Input should be on screen", async () => {
@@ -16,6 +17,26 @@ describe("<Subscribe/> Input", () => {
 
     expect(screen.getByRole("subscribe")).toBeInTheDocument();
   });
+  test("Mock Api Error Alert", async () => {
+    renderWithProviders(<Subscribe />);
+    const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
+
+    const input = screen.getByRole("subscribe");
+    const button = screen.getByText("SUBSCRIBE");
+
+    userEvent.type(input, emailMockError);
+
+    userEvent.click(button);
+
+    await waitFor(() => {
+      expect(alertMock).toHaveBeenCalledWith(
+        '{"error":"Email is already in use"}'
+      );
+    });
+
+    alertMock.mockRestore();
+  });
+
 });
 
 describe("<Subscribe/> Button", () => {
