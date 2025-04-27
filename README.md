@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+|A professional React application focused on mastering state management techniques, component testing, and modern deployment practices.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 About the Project
+This project demonstrates advanced concepts in React, including global state management, reliable component testing, API mocking, and efficient deployment strategies.
 
-## Available Scripts
+It leverages a robust toolset to create scalable, maintainable, and production-ready applications.
 
-In the project directory, you can run:
+🛠️ Technologies Used
+React – Frontend framework
 
-### `npm start`
+Redux – Global state management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Jest & React Testing Library (RTL) – Unit and integration testing
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+MSW (Mock Service Worker) – Mocking HTTP requests for reliable tests
 
-### `npm test`
+CSS & JavaScript – Styling and logic
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Redis – Server-side caching to improve API response times
 
-### `npm run build`
+Docker – Containerization
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+CI/CD with GitLab – Automated testing, building, and deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Oracle VM – Deployment infrastructure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+📦 Key Features
+State Management:
+Utilizes Redux for scalable and predictable state control across the application.
 
-### `npm run eject`
+Reliable Testing:
+Integrated Jest and RTL, achieving over 80% test coverage for components and logic.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Mocked API Requests:
+Used MSW (Mock Service Worker) to intercept HTTP requests during testing, increasing test reliability and reducing flakiness.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Performance Optimization:
+Implemented Redis caching, significantly reducing server response times.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Continuous Integration/Continuous Deployment:
+Automated pipelines in GitLab for:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  Running tests
+  
+  Building Docker images
+  
+  Deploying to an Oracle VM |
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image](https://github.com/user-attachments/assets/735eb6bf-4106-423d-ae09-5a29b1469508)
+![image](https://github.com/user-attachments/assets/0dd8d28d-1110-4495-9965-687957303a7b)
+![image](https://github.com/user-attachments/assets/a8a9eae7-921a-4942-a876-a8e132b15c55)
