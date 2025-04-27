@@ -47,9 +47,9 @@ export function Community() {
                 
               key={person.id}
               id={person.id}
-                name={`${person.firstName} ${person.lastName}`}
-                position={person.position}
-                image={person.avatar}
+                name={person.name}
+                position={person.status}
+                image={person.image}
                 
                 
               />

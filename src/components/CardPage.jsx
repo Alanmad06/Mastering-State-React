@@ -21,7 +21,7 @@ export const CardPage = () => {
         .then((data) => {
           
           setLoading(false)
-          setPerson(data[0])})
+          setPerson(data)})
         .catch (e =>{console.error(e);}) 
     
 } 
@@ -35,11 +35,11 @@ export const CardPage = () => {
       </button>
       {!loading ?
       <>
-       <div>Card Page</div> <Card
+        <Card
         id={person.id}
-        name={`${person.firstName} ${person.lastName}`}
-        position={person.position}
-        image={person.avatar}
+        name={person.name}
+        position={person.status}
+        image={person.image}
       /> </>: <p>Loading  ...</p>}
       
     </article>

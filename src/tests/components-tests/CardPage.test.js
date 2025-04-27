@@ -112,7 +112,7 @@ describe("<CardPage />", () => {
     let card;
     
     await waitFor(() => {
-      card = screen.getByText("Lead Designer at Company Name");
+      card = screen.getByText("Big Community of People Like You");
     });
 
     userEvent.click(card);

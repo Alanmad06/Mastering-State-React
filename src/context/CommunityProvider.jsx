@@ -10,12 +10,12 @@ export function CommunityProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/community")
+    fetch("https://rickandmortyapi.com/api/character/?page=1")
       .then((data) => data.json())
       .then((data) => {
-       
+       console.log(data)
         setIsLoading(false);
-        setData(data);
+        setData(data.results);
       })
       .catch((error) => {
         console.error(error);

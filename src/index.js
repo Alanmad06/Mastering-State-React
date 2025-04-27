@@ -57,7 +57,6 @@ async function enableMocking() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = setupStore()
 
-enableMocking().then(()=>{
 
   root.render(
     <CommunityProvider>
@@ -66,7 +65,7 @@ enableMocking().then(()=>{
       </Provider>
     </CommunityProvider>
   );
-})
+
 
 
 // If you want to start measuring performance in your app, pass a function
