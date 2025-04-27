@@ -1,110 +1,42 @@
-import { useReducer, useRef } from "react";
+import {  useRef } from "react";
+
+import { useDispatch,useSelector } from "react-redux";
 import "../styles/Subscribe.css";
-import { initialState, subscribeReducer } from "../reducers/subscribe";
+
+import { subscribeEmail as subscribeEmailRedux, unsubscribeEmail as  unsubscribeEmailRedux  } from "../redux/slices/thunksSubscribeSlice";
+
+
+
+
+
 
 export function Subscribe() {
+
   const emailRef = useRef();
+  const dispatch = useDispatch()
+  const { loading , subscribed}  = useSelector(state => state.subscribe)
 
-  const [state, dispatch] = useReducer(subscribeReducer, initialState);
-  const { isItSubscribed, email, isLoading } = state;
-  const addEmail = (email) => {
-    dispatch({
-      type: "ADD_EMAIL",
-      payload: { email },
-    });
-  };
-
-  const changeSubscription = (subscription) => {
-    dispatch({
-      type: "CHANGE_SUBSCRIPTION",
-      payload: { isItSubscribed: subscription },
-    });
-  };
-
-  const changeLoading = () => {
-    dispatch({
-      type: "CHANGE_LOADING",
-    });
-  };
-
-  const clearEmail = () => {
-    dispatch({
-      type: "CLEAR_EMAIL",
-    });
-  };
-
+  
   const subscribeEmail = (event) => {
-    if (!isItSubscribed && emailRef.current.value !== "") {
-      addEmail(emailRef.current.value);
-      changeLoading();
-
-      const body = {
-        email: emailRef.current.value,
-        id: emailRef.current.value,
-      };
-
-      const requestInit = {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify(body),
-      };
-
-      fetch("http://localhost:3002/subscribe", requestInit)
-        .then((data) => {
-          return data.json();
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .then((data) => {
-          changeLoading();
-
-          emailRef.current.value = "";
-
-          if (data.error) {
-            alert(JSON.stringify(data));
-            clearEmail();
-          } else {
-            changeSubscription(!isItSubscribed);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    event.preventDefault()
+  
+    if (!subscribed && emailRef.current.value !== "") {
+      
+       dispatch(subscribeEmailRedux(emailRef.current.value))
+       emailRef.current.value = ''
     }
   };
 
-  const unsubscribeEmail = (event) => {
-    if (isItSubscribed) {
-      changeLoading();
-
-      const requestInit = {
-        method: "DELETE",
-      };
-
-      fetch("http://localhost:3002/subscribe/" + email, requestInit)
-        .then((data) => {
-          console.log(data);
-          return data.json();
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .then((data) => {
-          changeLoading();
-          changeSubscription(!isItSubscribed);
-          clearEmail();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+  const unsubscribeEmail = (event ) => {
+    event.preventDefault()
+    if (subscribed) {
+      dispatch(unsubscribeEmailRedux())
+      emailRef.current.value = ''
     }
   };
 
   return (
-    <article className="subscribe">
+    <article className="subscribe" id="subscribe">
       <div className="subscribe__title">
         <h2 className="subscribe__title-h2"> Join Our Program </h2>
         <p className="subscribe__title-p">
@@ -118,12 +50,13 @@ export function Subscribe() {
           id="email"
           type="text"
           placeholder="Email"
+          role="subscribe"
         />
-        {isItSubscribed ? (
+        {subscribed ? (
           <button
-            disabled={isLoading}
+            disabled={loading}
             className={
-              !isLoading
+              !loading
                 ? "subscribe__form-button"
                 : "subscribe__form-button loading"
             }
@@ -133,9 +66,9 @@ export function Subscribe() {
           </button>
         ) : (
           <button
-            disabled={isLoading}
+            disabled={loading}
             className={
-              !isLoading
+              !loading
                 ? "subscribe__form-button "
                 : "subscribe__form-button loading "
             }
@@ -148,3 +81,4 @@ export function Subscribe() {
     </article>
   );
 }
+

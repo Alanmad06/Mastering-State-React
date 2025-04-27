@@ -1,0 +1,43 @@
+.notfound {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assests/images/technology-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding-top: 1em;
+  text-align: center;
+  gap: 30px;
+  color: #fff;
+}
+
+.notfound__button {
+  background-color: rgb(64, 64, 149);
+  border-radius: 20px;
+  padding: 10px;
+  width: 100px;
+  border: none;
+  display: flex;
+  align-self: center;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.notfound__link{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+
+.notfound__button:hover{
+    background-color: rgb(42, 42, 113);
+    transition: all ease-in-out .3s;
+}
+
+

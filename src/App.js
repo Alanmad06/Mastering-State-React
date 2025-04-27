@@ -1,30 +1,18 @@
+import "./App.css";
 
-import { useContext, useEffect, useState } from 'react';
-import './App.css';
-import { Community } from './components/Community';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { Main } from './components/Main';
-import { Subscribe } from './components/Subscribe';
-import { communityContext } from './context/CommunityProvider';
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { Main } from "./components/Main";
+import { Subscribe } from "./components/Subscribe";
 
 function App() {
-
-
- 
-
-
-
   return (
     <>
-   <Header/>
-   <Main/>
-   <Community/>
-   <Subscribe/>
-   <Footer/>
-   
-   </>
-  
+      <Header />
+      <Main />
+      <Subscribe />
+      <Footer />
+    </>
   );
 }
 
